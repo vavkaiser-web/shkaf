@@ -650,16 +650,22 @@ function cleanCurrentUrl() {
     .replace(/[?&]$/, '');
 }
 
+function shouldProbeInfo() {
+  const host = location.hostname;
+  if (['localhost', '127.0.0.1', '[::1]'].includes(host)) return true;
+  return /^(10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)/.test(host);
+}
+
 async function resolveInstallUrl() {
   const current = cleanCurrentUrl();
+  // /__info есть только у локального serve.py/туннеля; на обычном хостинге просто используем текущий адрес.
+  if (!shouldProbeInfo()) return current;
   try {
     const response = await fetch('/__info', { cache: 'no-store' });
     if (response.ok) {
       const info = await response.json();
       if (info && info.public) return info.public;
-      if (info && info.lan && ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) {
-        return info.lan;
-      }
+      if (info && info.lan) return info.lan;
     }
   } catch {}
   return current;
