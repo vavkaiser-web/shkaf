@@ -1,0 +1,11 @@
+node_modules/
+.chrome-*/
+.npm-cache/
+.DS_Store
+qa/report.json
+.tools/
+.cloudflared-home/
+.public-url
+.npm-cache/
+.cloudflared.log
+qa/shots/

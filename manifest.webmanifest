@@ -1,0 +1,40 @@
+{
+  "name": "ШКАФ — образы из ваших вещей",
+  "short_name": "ШКАФ",
+  "description": "Личный стилист: собирает образы из ваших вещей по погоде и трендам сезона. Фото хранятся только на устройстве.",
+  "lang": "ru",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#F5F0E7",
+  "theme_color": "#F5F0E7",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "id": "./",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "categories": [
+    "lifestyle",
+    "shopping"
+  ],
+  "prefer_related_applications": false
+}
