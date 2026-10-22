@@ -9,3 +9,4 @@ qa/report.json
 .npm-cache/
 .cloudflared.log
 qa/shots/
+.stable-url

@@ -10,7 +10,8 @@
     "qa:sw": "node qa/sw-check.mjs",
     "serve": "python3 serve.py 8765",
     "share": "bash share.command",
-    "tunnel": "python3 tunnel.py 8765"
+    "tunnel": "python3 tunnel.py 8765",
+    "qa:deploy": "node qa/deploy-check.mjs"
   },
   "devDependencies": {
     "puppeteer-core": "^25.16.0"

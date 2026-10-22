@@ -63,13 +63,16 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             ip = lan_ip()
             if ip:
                 info["lan"] = f"http://{ip}:{PORT}/"
-        try:
-            with open(os.path.join(ROOT, ".public-url"), encoding="utf-8") as handle:
-                public = handle.read().strip()
+        # .stable-url (постоянный хостинг) приоритетнее временного .public-url (туннель)
+        for name in (".stable-url", ".public-url"):
+            try:
+                with open(os.path.join(ROOT, name), encoding="utf-8") as handle:
+                    public = handle.read().strip()
+            except OSError:
+                continue
             if public.startswith("https://"):
                 info["public"] = public.rstrip("/") + "/"
-        except OSError:
-            pass
+                break
         payload = json.dumps(info, ensure_ascii=False).encode("utf-8")
         self.send_response(200)
         self.send_header("Content-Type", "application/json; charset=utf-8")

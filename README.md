@@ -117,7 +117,9 @@ npm run serve       # python3 serve.py 8765
 - `npm run qa` — **42/42** e2e-проверки в headless Chrome: первый запуск, установка (кнопка, баннер, QR, ссылка,
   инструкция), демо-шкаф, образы, «надеть», сохранение, добавление вещи с фото, ручная погода, сохранность после
   перезагрузки, экспорт/импорт, мобильная вёрстка, отсутствие ошибок в консоли. Скриншоты — `qa/shots/`.
-- Публичная HTTPS-версия: service worker регистрируется, 15 файлов в кэше, приложение открывается офлайн.
+- GitHub Pages: **13/13** проверок задеплоенной версии (`npm run qa:deploy`) — страница, погода, манифест,
+  install-prompt, QR, service worker, мобильная вёрстка, ноль ошибок в консоли.
+- Service worker на HTTPS: 15 файлов в кэше, приложение открывается офлайн.
 - `node --check` по всем модулям — без ошибок.
 
 ```bash
@@ -125,7 +127,8 @@ cd wardrobe
 npm install        # puppeteer-core для e2e
 npm test
 npm run qa
-BASE_URL=./ npm run qa:sw
+npm run qa:deploy      # проверка https://vavkaiser-web.github.io/shkaf/
+npm run qa:sw
 ```
 
 ---
